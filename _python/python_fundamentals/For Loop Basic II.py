@@ -1,3 +1,4 @@
+
 # def Biggie_Size(list):
 #     # array = []
 #     for x in range(len(list)):
@@ -61,9 +62,8 @@
 # print(ultimateAnalysis([1,2,2,2,2,2,2,2]))
 
 
-def reverseList(list):
-    reversedList=[]
-    for x in range(len(list)-1,-1,-1):
-        reversedList.append(list[x])
-    return reversedList
-print(reverseList([37,2,1,-9]))
+# def reverseList(list):
+#     reversedList=[]
+#     for x in range(len(list)-1,-1,-1):
+#         reversedList.append(list[x])
+#     return reversedList
