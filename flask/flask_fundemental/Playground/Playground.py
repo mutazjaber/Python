@@ -11,7 +11,7 @@ def play_x(x):
 
 @app.route('/play/<int:x>/<color>')
 def play_x_color(x,color):
-    return render_template('index.html', count=x, color=color)
+    return render_template('index.html', count=int(x), colore=color)
 
 
 if __name__ == '__main__':
