@@ -1,0 +1,21 @@
+body {
+    text-align: -webkit-center;
+}
+
+
+.box-1{
+    height: 70px;
+    width: 250px;
+    border: 2px solid black;
+    justify-content: center;
+    display: flex;
+    margin: 30px;
+    
+}
+
+.box-2{
+    border: 2px solid black;
+    height:150px ;
+    width: 500px;
+    
+}
