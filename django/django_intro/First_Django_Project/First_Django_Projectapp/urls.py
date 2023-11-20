@@ -1,0 +1,9 @@
+from django.urls import path     
+from . import views
+urlpatterns = [
+    path('', views.index),
+    path('blogs',views.root),
+    path('blogs/new',views.new),
+
+]   
+
