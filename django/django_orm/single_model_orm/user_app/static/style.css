@@ -1,0 +1,67 @@
+
+* {
+    padding:0;
+    margin: 0px 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+* {
+    padding:0;
+    margin: 0px 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body .section1 {
+    padding: 0px 20px;
+    border-bottom: 2px solid black;
+    border-radius: 3%;
+}
+
+label {
+    display: inline-flex;
+    gap: 30px;
+    text-align: right;
+    align-items: center;
+    min-width: 80px;
+}
+.first_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+}
+
+.second_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    gap:35px;
+}
+
+
+.parent-div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+button {
+    width: 70px;
+    box-shadow: 2px 2px dodgerblue;
+}
