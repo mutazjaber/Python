@@ -1,0 +1,92 @@
+create models:
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    desc = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+
+class Author(models.Model):
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=45)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    books=models.ManyToManyField(Book,related_name="Author")
+
+
+
+------------------------------------------------------
+
+2- python manage.py migrate
+
+-------------------------------------------------------
+
+3- python manage.py shell
+   from Books_Authors_app.models import *
+
+--------------------------------------------------------
+
+Book.objects.create(title = "C Sharp" , desc ="C is a bad language")
+Book.objects.create(title = "Java" , desc =" is a not bad language")
+Book.objects.create(title = "python" , desc =" is a good language")
+Book.objects.create(title = "PHP" , desc =" is the worse language")
+Book.objects.create(title = "Ruby" , desc =" is the best language")
+
+
+
+Author.objects.create(first_name="Jane" ,last_name="Austen")
+Author.objects.create(first_name="Emily" ,last_name="Dickinson")
+Author.objects.create(first_name="Fyodor" ,last_name="Dostoevsky")
+Author.objects.create(first_name="William" ,last_name="Shakespeare")
+Author.objects.create(first_name="Lau" ,last_name="Tzu")
+
+>>> from Books_Authors_app.models import *
+
+>>> x =Book.objects.get(title="C Sharp")
+>>> x.title="C #"
+>>> x.save()
+
+>> x = Author.objects.get(id=4)
+>>> x.first_name="Bill"
+>>> x.save()
+
+>>> q=Author.objects.get(id=1)
+>>> q.books.add(Book.objects.get(id=1),Book.objects.get(id=2))
+
+
+>>> q=Author.objects.get(id=2)
+>>> q.books.add(Book.objects.get(id=1),Book.objects.get(id=2),Book.objects.get(id=3))
+
+
+>>> q=Author.objects.get(id=3)
+>>> q.books.add(Book.objects.get(id=1),Book.objects.get(id=2),Book.objects.get(id=3),Book.objects.get(id=4))
+
+
+>>> q=Author.objects.get(id=4)
+>>> for i in Book.objects.all():
+...  q.books.add(i)
+...
+
+
+ Book.objects.get(id=3).Author.all()
+
+
+
+
+
+>>> r=Book.objects.get(id=3)
+>>> r.Author.all()
+<QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (4)>]>
+>>> r.Author.remove(Author.objects.get(id=2))
+>>> r.Author.remove(Author.objects.get(id=1))
+>>> r.Author.all()
+<QuerySet [<Author: Author object (3)>, <Author: Author object (4)>]>
+
+>>> Author.objects.get(id=3).books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
+>>>
+
+
+>>> Book.objects.get(id=5).Author.all()
+<QuerySet [<Author: Author object (4)>]>
