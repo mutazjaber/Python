@@ -12,7 +12,7 @@ def result():
     "fav" : request.form['language'] ,
     "Comment" : request.form['Comment']
     }
-    return render_template('result.html',data=data)
+    return render_template('result.html',data)
 
 
 

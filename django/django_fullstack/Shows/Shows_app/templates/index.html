@@ -4,20 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
+<body>    <style>
+    body {  padding: 30px;
+            font-family: 'Quicksand', sans-serif;}        
+    h1   {  text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Quicksand', sans-serif;}
+    .add-show {text-decoration: underline;} 
+    .idclass {
+        text-decoration: underline;
+        color:rgb(0, 123, 255);
+    } 
+    
+</style>
+    
     <h1>All Shows</h1>
     <div>
-        <table>
-            <tr>
+        <table class="table table-bordered table-hover>
+            <tr class="table-header">
                 <th>ID</th>
                 <th>Title</th>
                 <th>Network</th>
-                <th>Release Date</th>
-                <th>Action</th>
+                <th>Date</th>
+                <th>Actions </th>
               </tr>
+            {% for show in allshows %}
+              <tr>
+                <td class="idclass">{{show.id}}</td>
+                <td>{{ show.title }}</td>
+                <td>{{show.Network}}</td>
+                <td>{{show.Release_Date}}</td>
+                <td>
+                    <a href="shows/{{show.id}}">Show |</a>
+                    <a href="shows/{{show.id}}/edit"> Edit |</a>
+                    <a href="shows/{{show.id}}/delete"> Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
         </table>
-        <p><a href="shows\new">Add a new Show</a></p>
+        <p><a href="shows/new">Add a new Show</a></p>
     </div>
 </body>
 </html>
