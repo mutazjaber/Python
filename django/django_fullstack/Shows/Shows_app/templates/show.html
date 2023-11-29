@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>TV Shows :{{id}}</h1>
+    <p>Title :{{title}}</p>
+    <p>Network: {{network}}</p>
+    <p>Description :{{description}}</p>
+    <p>Release_date:{{release_date}}</p>
+    <button><a href="/">Go Back</a></button>
+</body>
+</html>
