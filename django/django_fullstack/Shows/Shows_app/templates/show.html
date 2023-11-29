@@ -8,11 +8,22 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} 
+                class="{{ message.tags }}"
+                {% endif %}>
+                    {{ message }}
+            </li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
     <h1>TV Shows :{{id}}</h1>
     <p>Title :{{title}}</p>
     <p>Network: {{network}}</p>
     <p>Description :{{description}}</p>
-    <p>Release_date:{{release_date}}</p>
+    <p>Release_date :{{release_date}}</p>
     <button><a href="/">Go Back</a></button>
 </body>
 </html>

@@ -25,16 +25,16 @@
     
     <h1>All Shows</h1>
     <div>
-        <table class="table table-bordered table-hover>
-            <tr class="table-header">
+        <table class="table table-bordered table-hover">
+            <tr class ="table-header">
                 <th>ID</th>
                 <th>Title</th>
                 <th>Network</th>
                 <th>Date</th>
                 <th>Actions </th>
-              </tr>
+                </tr>
             {% for show in allshows %}
-              <tr>
+                <tr>
                 <td class="idclass">{{show.id}}</td>
                 <td>{{ show.title }}</td>
                 <td>{{show.Network}}</td>
