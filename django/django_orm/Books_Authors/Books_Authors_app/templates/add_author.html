@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>book_authors</title>
+    <title>adding_authors</title>
 </head>
 <body>
     <style>
@@ -36,30 +36,27 @@
     
     </style>
     <div >
-        <h1>Add Book</h1>
-        <form action="/add_this_book " method="post" class=" form">
+        <h1>Add An author</h1>
+        <form action="/add_this_author " method="post" class=" form">
             {% csrf_token %}
-            Title : <input type="text" name="title">
-            Description : <textarea name="desc" id="" cols="30" rows="10"></textarea>
+            First Name : <input type="text" name="first_name">
+            Last Name : <input type="text" name="last_name">
+            Notes : <textarea name="notes" id="" cols="30" rows="10"></textarea>
             <button class="form-btn" type="submit" >Add</button>
         </form>
         </div>
-        <form action="add_authors" method="post">
-            {% csrf_token %}
-            <button class="form-btn" type="submit" >Authors</button>
-        </form>
         <div>
         <table class="table table-dark">
             <tr>
                 <th>ID</th>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Action</th>
             </tr>
-            {% for book in all_books %}
+            {% for author in all_authors %}
             <tr>
-                <td>{{book.id}}</td>
-                <td>{{book.title}}</td>
-                <td><a href="view_book/{{book.id}}" >view</a></td>
+                <td>{{author.id}}</td>
+                <td>{{author.first_name}} {{author.last_name}}</td>
+                <td><a href="view_author/{{author.id}}" >View</a></td>
             </tr>
             {% endfor %}    
         </table>
