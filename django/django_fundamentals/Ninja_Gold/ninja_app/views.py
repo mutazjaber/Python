@@ -13,11 +13,14 @@ def process(request):
     if request.POST['place'] == "Quest":
         gold = random.randint(-50,50)
         request.session['gold'] += gold
-        request.session['activities'][f"You entered a cave and earned {gold} gold."] = 'green'
+        if gold >0 :    
+            request.session['activities'][f"You entered a cave and earned {gold} gold."] = 'green'
+        else:request.session['activities'][f"You failed a quest and lost {gold} gold."] = 'red'
         return redirect('/')
     else:
         gold = random.randint(10,20)
         request.session['gold'] += gold
+        request.session['activities'][f"You entered a house and earned {gold} gold."] = 'green'
         return redirect('/')
     
 def clear_session(request):

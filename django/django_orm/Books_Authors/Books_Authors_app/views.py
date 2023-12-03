@@ -22,7 +22,7 @@ def view_books(request, id):
     return render(request,'view_book.html',dict)
 def add_auther_to_this_book(request):
         book_id = int(request.POST['book_id'])
-        this_book= Book.objects.get(id=request.POST['book_id'])
+        this_book= Book.objects.get(id=book_id)
         this_book.authors.add(Author.objects.get(id=request.POST["author"]))
         return redirect(f'/view_book/{book_id}')
     
@@ -49,7 +49,7 @@ def view_authors(request,id):
 
 def add_book_to_this_author(request):
     author_id = int(request.POST['author_id'])
-    this_author = Author.objects.get(id=request.POST['author_id'])
+    this_author = Author.objects.get(id=author_id)
     this_book_is=Book.objects.get(id=request.POST['book'])
     this_author.books.add(this_book_is)
     return redirect(f'/view_author/{author_id}')
