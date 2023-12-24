@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Order, Product
+from .models import *
 
 def index(request):
     context = {
