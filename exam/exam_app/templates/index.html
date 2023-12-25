@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; 
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center; 
+        }
+
+        .form-section {
+            margin-top: 20px; 
+        }
+
+        .form-group {
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Eye on the Pies</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="form-section">
+                    <h2>Registration</h2>
+                    {% if messages %}
+                        <ul class="messages">    
+                            {% for message in messages %}    
+                                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>    
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <form action="/register" method="post">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" name="confirm_password">
+                        </div>
+                        
+                        <input type="submit" value="Register" class="btn btn-primary">
+                    </form>
+                </section>
+            </div>
+
+            <div class="col-md-6">
+                <section class="form-section">
+                    <h2>Login</h2>
+                    <form action="/login" method="post">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                        
+                        <input type="submit" value="Login" class="btn btn-success">
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

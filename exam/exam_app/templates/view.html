@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>all Pies</title>
+    <style>
+        .scrollable-table {
+            max-height: 400px; 
+            overflow: auto;
+        }
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="container mt-5">
+        
+        <div class="row">
+            <div class="top-right mb-3 mr-3">
+                <a href="/destroy" class="btn btn-danger">Logout</a>
+            </div>
+            <div class="col-md-12">
+                <h2>welcome, {{current_user.firstName }} {{ current_user.lastName }}</h2>
+                <h2>Pies by Rocky </h2>
+                <div class="scrollable-table">
+                    <table class="table table-bordered">
+                        <th>
+                            <tr>
+                                <td>Name</td>
+                                <td>baker</td>
+                                <td>votes</td>
+
+                            </tr>
+                        </th>
+                        <tbody>
+                            {% for pie in pies %}
+                                <tr>
+                                    <td><a href="/pies/{{pie.id}}">{{pie.name}}</a></td>
+                                    <td>{{pie.my_user.firstName}} {{pie.my_user.lastName}}</td>
+                                    <td>   
+                                        <ul>
+                                            <li style="color: magenta;"> {{len.vote.pie.all}}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="/dashboard" class="btn btn-primary mt-3 "> << back to my pies  </a>
+            </div>
+            
+            
+        </div>
+    </div>
+</body>
+</html>

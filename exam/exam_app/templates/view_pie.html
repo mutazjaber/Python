@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>All Pies</title>
+    <style>
+        .scrollable-table {
+            max-height: 400px; 
+            overflow: auto;
+        }
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .content-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 50px auto; /* Center the box */
+            max-width: 600px; /* Adjust the max-width as needed */
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="top-right mb-3 mr-3">
+                <a href="/destroy" class="btn btn-danger">Logout</a>
+            </div>
+            <div class="col-md-12">
+
+                <div class="content-box text-center">
+                    <div class="scrollable-table">
+                        <h1>{{ pie.name }}</h1>
+                        <h3>by: {{ pie.my_user.firstName }} {{ pie.my_user.lastName }}</h3>
+                        <p>{{ pie.filling }}</p>
+                    </div>
+                    <div class="chat-section mt-3">
+                        <p>Cast a vote:</p>
+
+                    </div>
+                    <div class="skeptic">
+                        <ul>
+                            {% for vote in pie.vote.all %}
+                                <li style="color: magenta;">{{vote.first_name}} {{vote.last_name}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% if current_user not in pie.vote.all %}
+                        <form action="/vote/{{pie.id}}" method="post">{% csrf_token %}
+                            <input type="submit" name="vote" class="button" value="vote">
+                            <input type="hidden" name="which_form" value="add">
+                        </form>
+                        {% else %}
+                            <form action="/vote/{{pie.id}}" method="post">{% csrf_token %}
+                                <input  type="submit" name="vote" class="btn btn-success" value="Delicious">
+                                <input type="hidden" name="which_form" value="remove">
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+                <a href="/dashboard" class="btn btn-primary mt-3"> << Back to My Pies </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
