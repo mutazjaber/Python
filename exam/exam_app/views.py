@@ -17,7 +17,7 @@ def register(request):
     email =  request.POST['email']
     password = request.POST['password']
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-    conPassword = request.POST['confrim_password']
+    conPassword = request.POST['confirm_password']
     new_user = User.objects.create(firstName = fName, lastName = lName, email = email, password = pw_hash)
     request.session['id']  = new_user.id
     return redirect('/dashboard')
@@ -65,6 +65,7 @@ def add_pie(request):
         crust = request.POST['crust']
         my_user = User.objects.get(id = request.session['id'])
         new_pie = Pie.objects.create(name = name,  filling = filling ,crust=crust , my_user = my_user)
+        new_pie.save()
         content = {
             'pies' :Pie.objects.all(),
             'current_user' : my_user

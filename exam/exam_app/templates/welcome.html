@@ -48,13 +48,13 @@
                                 <tr>
                                     <td>{{pie.name}}</td>
                                     <td>
-                                        <ul style="text-decoration: none;">
-                                            <li>{{pie.filling}}</li>
-                                            <li>by: {{pie.my_user.firstName}} {{pie.my_user.lastName}}</li>
+                                        <ul >
+                                            <li >{{pie.filling}}</li>
+                                            <!-- <li>by: {{pie.my_user.firstName}} {{pie.my_user.lastName}}</li> -->
                                         </ul>
                                         <div class="btn-group" role="group" aria-label="pies Actions">
                                             <!-- {% if current_user.id == pie.my_user.id %} -->
-                                                <a href="/delete/{{pie.id}}" class="btn btn-danger">Delete</a>
+                                                <a  href="/delete/{{pie.id}}" class="btn btn-danger">Delete</a>
                                                 <a href="/edit_pie/{{pie.id}}" class="btn btn-warning">Edit</a>
                                             <!-- {% endif %} -->
                                         </div>
@@ -72,17 +72,17 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
+                        <input type="text" name="name" id="name" class="form-control" >
                     </div>
                     <div class="form-group">
                         <label for="filling">Filling:</label>
-                        <input type="text" name="filling" id="filling" class="form-control" required>
+                        <input type="text" name="filling" id="filling" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="crust">Crust:</label>
-                        <input type="text" name="crust" id="crust" class="form-control" required>
+                        <input type="text" name="crust" id="crust" class="form-control" >
                     </div>
-                    <div class="text-right"> <!-- Align the button to the right -->
+                    <div class="text-right">
                         <button type="submit" class="btn btn-success">Add Pie</button>
                     </div>
                 </form>

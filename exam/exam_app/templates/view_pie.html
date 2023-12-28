@@ -18,8 +18,8 @@
         .content-box {
             border: 1px solid #ccc;
             padding: 20px;
-            margin: 50px auto; /* Center the box */
-            max-width: 600px; /* Adjust the max-width as needed */
+            margin: 50px auto; 
+            max-width: 600px; 
         }
     </style>
 </head>
@@ -48,7 +48,7 @@
                         <p>Cast a vote:</p>
 
                     </div>
-                    <div class="skeptic">
+                    <div class="">
                         <ul>
                             {% for vote in pie.vote.all %}
                                 <li style="color: magenta;">{{vote.first_name}} {{vote.last_name}}</li>
